@@ -1,0 +1,39 @@
+\mysection{Discussion}\label{discussion}
+
+\mysubsection{Advantages and Disadvantages of using a Formal Analysis Method}
+In contrast to simulation based, probability based or holistic analysis methods for embedded real-time systems, formal methods can guarantee the correctness of their results~\cite{wan:06}.
+The analysis will surely reveal the worst case bounds of system properties such as end-to-end delays.
+Therefore, it is guaranteed that any system architecture accepted by the analysis, also fulfills all system requirements in reality~\cite{wan:06}.
+On the other hand, system analysis using formal methods often leads to very pessimistic and in general not tight bounds, due to
+a lack of details to include in the analysis and limited modeling capacities~\cite{wan:05}~\cite{cho:08}.
+Using formal methods, we can only compute hard upper and lower bounds to the real system characteristics, which makes this method only suitable to analyze hard real-time systems only.
+A system architecture might be rejected due to bad worst case guaranties, even if they are never actually reached
+in execution and therefore the system in fact fulfills all requirements\cite{wan:06}.
+
+Other significant advantages of the formal analysis are the fast analysis run-time, as well as the low set up effort for new architectures~\cite{wan:06}.
+Similar models can be easily and quickly constructed and compared, as this merely involves reconnecting the event and service flows between the components.
+In this way the technique is sufficiently productive even with a really high time-to-market pressure in the domain of embedded real-time systems and 
+the interactive nature of the design process of such systems~\cite{ver}~\cite{hoo}.
+
+Besides that, formal analysis methods are not suitable for systems with a dynamic and complex interactions, as this architecture can not be incorporated into the model properly~\cite{wan:06}.
+
+\mysubsection{Advantages of Using MPA}
+
+In contrast to many other formal analysis methods of embedded systems, the modular performance
+analysis relies neither on standard arrival patterns of events, nor on classical scheduling~\cite{pha}.
+In general the MPA can work really efficiently with only really few and abstract data about the system.
+The low demand on detailed information, makes MPA a lightweight analysis method~\cite{wan:06}.
+Furthermore, this leads to a high degree of generality and modularity, as well as an easy analyzability of system performance models~\cite{wan:06}.
+
+The MPA and RTC framework is easy to use, especially when working with the \href{https://www.mpa.ethz.ch/}{RTC Toolbox for Matlab}.
+It is a compositional method which simplifies the analysis of heterogeneous systems a lot.
+In addition, MPA can represent the majority of different event arrival patterns, whether arbitrary or not~\cite{cho:08}.
+
+\mysubsection{Disadvantages and Limitations of Using MPA}
+
+As we are abstraction from the time domain to the time interval domain, it is
+difficult to accurately exploit implicit timing correlations between event arrivals on different event streams within the MPA framework~\cite{wan:06}.
+
+In MPA and RTC it is impossible to model state-dependent behavior, as state information cannot be modeled naturally. 
+For example, scheduling policies, that depend on the fill-level of buffers just cannot be implemented in the framework of MPA.\
+Yet, thanks to~\cite{pha} we can interface RTC curves with state-based models using automata and hence also model states in this new extended framework.

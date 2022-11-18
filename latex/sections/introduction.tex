@@ -1,0 +1,61 @@
+\mysection{Introduction}\label{introduction}
+
+%In today's life embedded real-time systems can be found pretty much everywhere you go: traffic lights, the washing machine or digital alarm clocks, they all make use of this technology.
+When designing an embedded real-time system there are many questions we need to be answered already in the early stages of the design cycle: 
+What architecture to choose? What scheduling to use? How powerful do the CPUs need to be? Is the performance of the underlying execution platform sufficient to fulfill the given deadlines?
+These questions can be answered best by using system-level performance analysis.
+
+In general there are different categories of approaches for evaluating embedded systems.
+Above all there are holistic, simulation based and formal analysis methods for system-level performance~\cite{wan:06}.
+The latter category contains the modular performance analysis based on real-time calculus, which this paper is dedicated to.
+
+With MPA, we want to have an analysis method, that can work with only little information about the system~\cite{wan:06}.
+Additionally, we need to be able to evaluate, and therefore compare, numerous possible system models within a short time.
+This specifically sets the need for a short analysis time.
+Furthermore, we want the analysis process to be able, to deal with all kinds of different applications, environments, resource sharing strategies and hardware platforms~\cite{thi:07},
+that a distributed, heterogeneous and highly complex multiprocessor embedded real-time system might offer.
+As a real-time system is defined as a system, that can always guarantee to complete its task before a given deadline~\cite{mar}, we need to know the guaranteed maximum response times of the system.
+However, having completely accurate results, knowing average case response times and being able to model details, is not really important yet.
+
+\mysubsection{About the Paper}
+
+Initially we will characterize the system data (\autoref{data}) that is needed in order to perform the MPA and model this data using arrival and service 
+curve sets in \autoref{arrivalCurves} and \autoref{serviceCurves}. 
+In \autoref{complexSystem} we will build the system performance model out of HW/SW-components (\autoref{component}).
+This model we are then going to analyze on performance (\autoref{performanceAnalysis}) and sensitivity (\autoref{sensitivityAnalyis}) properties, in order to find answers to important design questions regarding the embedded real-time system.
+Finally, we are going to discuss (\autoref{discussion}) whether MPA really is a suitable framework for the context specified above.
+
+While not proposing any new research, a general overview of MPA and RTC is given.
+It shall be an introduction into the topic and a guide for utilizing MPA to evaluate own embedded real-time systems.
+The paper is limited to the evaluation of hard real-time systems.
+Those are systems, in which a single missed deadline may lead to a complete failure of the system.
+Therefore, hardware and software have to operate strictly within the given time limits.
+
+Most chapters will be accompanied by the example of an embedded real-time system. Here we will analyze, and later on optimize, the properties of a simple message-receiver device to illustrate the use of MPA.\
+This example was made using the \href{https://www.mpa.ethz.ch/}{RTC Toolbox for Matlab}.
+Therefore, the plots are designed using Matlab.
+The example itself is constructed by myself, yet inspired by~\cite{ver}.
+
+\mysubsection{Terminology}
+
+First up, we want to introduce the three main concepts of this paper, along with their correlations between each other.
+
+\textbf{Network calculus} is a ``mathematical approach to model network behavior''~\cite{thi:00} and thus an approach to model the flow of data through the network. 
+It provides a general formal framework, as well as useful tools, to compute the worst case bounds on different characteristics of the communication network,
+such as queuing delays and required buffer sizes~\cite{sof:12/2}.
+To reveal those bounds, network calculus integrates information about the packet scheduling algorithms, the incoming events and much more~\cite{thi:00}.
+
+When combining the results of network calculus with the theory of the min/max-plus linear system (see \autoref{minMaxPlus}) and the theory of real-time scheduling, we end up with \textbf{RTC}:
+a framework, specifically designed for analyzing hard heterogeneous real-time systems~\cite{thi:00}.
+Hence, most of the theorems of network calculus can now also be adapted to real-time systems.
+Here the incoming event streams and available system capacities are described using curves,
+which can then be transformed, whenever they are being processed at any system component.
+In this way hard upper and lower bounds of the embedded real-time system's characteristics, like delays and buffers, can be computed.
+The RTC framework was first proposed by~\cite{thi:00} and later on extended by the framework of MPA in~\cite{cha}.
+
+\textbf{MPA} defines a specific, RTC based, approach to perform a system-level performance analysis of a distributed embedded real-time system.
+Here ``performance'' is defined, as to what extent the system meets its answer time requirements~\cite{thi:07}.
+Therefore, the performance analysis is the process of determining these properties.
+To characterize end-to-end delays, response time and other system properties, MPA now cuts the system into its components in a modular way.
+Afterwards all the data is combined into one big abstract system performance model, along with information about the environment, the components itself and the architecture.
+This model can be analyzed now using the formal possibilities of RTC to gain insight into the system, as well as to obtain hard upper and lower bounds to various system properties~\cite{wan:05}.

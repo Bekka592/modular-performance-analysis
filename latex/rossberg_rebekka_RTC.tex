@@ -1,0 +1,51 @@
+\documentclass[conference,a4paper]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\pagenumbering{arabic}
+
+\usepackage{tikz}
+\usepackage{tcolorbox}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=teal, urlcolor=violet, citecolor=gray}
+
+\newcommand\mysection[1]{\section[#1]{\MakeUppercase{\textbf{#1}}}}
+\newcommand\mysubsection[1]{\subsection{\textup{\textbf{#1}}}}
+\newcommand\mysubsubsection[1]{\subsubsection{#1}}
+
+\title{Modular Performance Analysis \\ Using Real-Time Calculus}
+\author{Rebekka Roßberg\\Institute of Embedded Systems/ Real-Time Systems\\Ulm University\\rebekka.rossberg@uni-ulm.de}
+
+\begin{document}
+\maketitle
+
+\thispagestyle{plain}
+\pagestyle{plain}
+
+\begin{tcolorbox}[title=Abstract]
+  \input{sections/abstract}
+\end{tcolorbox}
+
+\input{sections/introduction}
+\input{sections/collecting_data}
+\input{sections/arrival_curves}
+\input{sections/service_curves}
+\input{sections/component}
+\input{sections/complex_system}
+\input{sections/performance_analysis}
+\input{sections/sensitivity_analysis}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\begin{appendices}
+  \input{sections/min_max_plus}
+\end{appendices}
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,references}
+
+\end{document}

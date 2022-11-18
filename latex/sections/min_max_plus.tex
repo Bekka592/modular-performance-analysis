@@ -1,0 +1,28 @@
+\section{The Min/Max-Plus Calculus}\label{minMaxPlus}
+
+Real-time calculus uses the min/max-plus algebra for computational purposes.
+Instead of the usual algebraic structure of \((\mathbb{R},+,\cdot)\), we are now dealing with
+\((\mathbb{R}\cup\infty,+,\cdot)\) as an algebraic structure. 
+Luckily we do not need to deep dive into the characteristics of the algebra here, 
+knowing and understanding the following operations on functions \(f\) and \(g\) is sufficient for being able to
+use RTC as a calculation tool:
+
+\begin{align*}
+    \text{Min-Plus Convolution:} \\
+    (f \otimes g)(\Delta t) &= \inf _{0 \leq \lambda \leq \Delta t} \left\{ f (\Delta t - \lambda) + g (\lambda) \right\} \\
+    \text{Min-Plus Deconvolution:} \\
+    (f \oslash g)(\Delta t) &= \sup _{\lambda \geq 0} \left\{ f (\Delta t + \lambda) - g (\lambda) \right\} \\
+    \text{Max-Plus Convolution:} \\
+    (f \overline{\otimes} g)(\Delta t) &= \sup _{0 \leq \lambda \leq \Delta t} \left\{ f (\Delta t - \lambda) + g (\lambda) \right\} \\
+    \text{Max-Plus Deconvolution:} \\
+    (f \overline{\oslash} g)(\Delta t) &= \inf _{\lambda \geq 0} \left\{ f (\Delta t + \lambda) - g (\lambda) \right\}
+\end{align*}
+
+Proofs and more detailed information on the min/max-plus algebra can be found in~\cite{bou}.
+These equations can be quite complicated to compute,
+but the \href{https://www.mpa.ethz.ch/}{RTC Toolbox for Matlab} is here to take care of them.
+This toolkit is a great help when it comes to performing MPA for any kind of use case scenarios.
+
+%As a reminder: The Supremum of a set of elements is defined as the set's least upper bound.
+%In case it is within the set, the Supremum can be called a maximum.
+%In an analogue way the Infimum of a set is defined as its greatest lower bound.
